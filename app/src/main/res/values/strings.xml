@@ -1,0 +1,145 @@
+<resources>
+    <string name="app_name">BleAttendance</string>
+    <string name="action_settings">Settings</string>
+
+    <!--toolbar-->
+    <string name="action_scan">scan</string>
+    <string name="action_write">write</string>
+    <string name="action_disconnect">dis connect</string>
+    <string name="action_connect_all">connect all</string>
+    <string name="action_post_uuid">post uuid</string>
+    <string name="action_logout">logout</string>
+
+    <!--<string name="base_url">http://119.29.155.240:8080/bluetooth/</string>-->
+    <!--新版后端接口-->
+    <!--<string name="new_base_url">http://www.redleaf.wang/api/</string>-->
+    <!--本地测试接口-->
+    <!--<string name="new_base_url">http://192.168.1.107:8080/api/</string>-->
+    
+    <!--<添加功能后的后台接口>-->
+    <string name="new_base_url">http://40.125.169.206:80/api/</string>
+
+    <!-- Adv -->
+    <string name="label_advertisingStatus">Advertising Status</string>
+    <string name="status_advertising">Advertising already</string>
+    <string name="status_notAdvertising">Not Advertising</string>
+    <string name="status_advDataTooLarge">Not Advertising. Advertisement is larger than 31 bytes.</string>
+    <string name="status_advFeatureUnsupported">Not Advertising. Advertising not supported.</string>
+    <string name="status_advInternalError">Not Advertising. Internal error occurred.</string>
+    <string name="status_advTooManyAdvertisers">Not Advertising. No advertising instance is available.</string>
+
+
+    <string name="teacher_page_toolbar">Teacher Scan</string>
+    <string name="student_page_toolbar">Student Advertise</string>
+
+
+    <string name="current_course_title">当前课程:</string>
+    <string name="current_course_no_choose">未选定</string>
+
+    <string name="fab_tea_input">输入</string>
+    <string name="fab_tea_connect">连接</string>
+    <string name="fab_tea_scan">扫描</string>
+    <string name="fab_tea_write">锁屏</string>
+    <string name="fab_tea_post">上传</string>
+
+    <string-array name="course_weeks">
+        <item>周一</item>
+        <item>周二</item>
+        <item>周三</item>
+        <item>周四</item>
+        <item>周五</item>
+        <item>周六</item>
+        <item>周日</item>
+    </string-array>
+
+    <string-array name="course_time_1">
+        <item>8:00</item>
+        <item>8:55</item>
+        <item>10:00</item>
+        <item>11:00</item>
+        <item>14:00</item>
+        <item>14:55</item>
+        <item>16:05</item>
+        <item>17:00</item>
+        <item>19:00</item>
+        <item>19:55</item>
+        <item>20:50</item>
+        <item>21:45</item>
+    </string-array>
+
+    <string-array name="course_time_2">
+        <item>8:00 ~ 9:40 am</item>
+        <item>10:05 ~ 11:45 am</item>
+        <item>2:00 ~ 3:40 pm</item>
+        <item>4:05 ~ 5:45 pm</item>
+        <item>7:00 ~ 8:40 pm</item>
+        <item>8:50 ~ 10:30 pm</item>
+    </string-array>
+
+    <string-array name="course_time_3">
+        <item>8:00 ~ 9:40 am</item>
+        <item>10:05 ~ 11:45 am</item>
+        <item>2:00 ~ 3:40 pm</item>
+        <item>4:05 ~ 5:45 pm</item>
+        <item>7:00 ~ 8:40 pm</item>
+        <item>8:50 ~ 10:30 pm</item>
+    </string-array>
+
+    <string-array name="course_title_weeks">
+        <item>整学期</item>
+        <item>第一周</item>
+        <item>第二周</item>
+        <item>第三周</item>
+        <item>第四周</item>
+        <item>第五周</item>
+        <item>第六周</item>
+        <item>第七周</item>
+        <item>第八周</item>
+        <item>第九周</item>
+        <item>第十周</item>
+        <item>第十一周</item>
+        <item>第十二周</item>
+        <item>第十三周</item>
+        <item>第十四周</item>
+        <item>第十五周</item>
+        <item>第十六周</item>
+        <item>第十七周</item>
+        <item>第十八周</item>
+    </string-array>
+
+    <string-array name="status">
+        <item>签到</item>
+        <item>请假</item>
+        <item>旷课</item>
+        <item>迟到</item>
+        <item>早退</item>
+        <item>其他</item>
+    </string-array>
+    <string-array name="institute_title">
+        <item></item>
+    </string-array>
+
+    <!--登录String-->
+    <string name="login_dialog">登录中...</string>
+    <string name="login_error_name_null">账号不能为空</string>
+    <string name="login_error_password_null">密码不能为空</string>
+    <string name="login_error_not_network">网络不给力，请检查网络设置</string>
+    <string name="login_error_passwork_error">账号或密码错误</string>
+
+    <string name="request_error_for_net">网络请求失败,请检查网络设置</string>
+    <string name="request_again">重新加载</string>
+
+    <string name="data_menu_one">课程数据</string>
+    <string name="data_menu_two">班级数据</string>
+    <string name="data_menu_thr">学院数据</string>
+    <string name="data_menu_for">学校数据</string>
+
+    <string name="title_activity_show_data">数据展示</string>
+    <string name="title_activity_show_data_two">班级数据展示</string>
+    <string name="title_activity_show_data_thr">学院数据展示</string>
+    <string name="title_activity_show_data_for">学校数据展示</string>
+
+    <string name="large_text">
+        sdsadasd
+    </string>
+</resources>

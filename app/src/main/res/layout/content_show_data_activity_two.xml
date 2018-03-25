@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.srtianxia.bleattendance.ui.teacher.dataanalysis.ShowDataActivity">
+
+    <!--<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:text="@string/large_text" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <scut.carson_ho.searchview.SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:searchBlockColor="#ffffff"
+            app:searchBlockHeight="150"
+            app:textColorSearch="#3F51B5"
+            app:textHintSearch="输入查询班级代码"
+            app:textSizeSearch="5dp" />
+
+        <LinearLayout
+            android:id="@+id/show_class_linear"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="缺勤前10班级" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/show_class_info"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                tools:listitem="@layout/data_analysis_show_attendinfo" />
+        </LinearLayout>
+
+
+        <com.srtianxia.bleattendance.ui.teacher.dataanalysis.MyShanXinView
+            android:id="@+id/shanxin_view"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="具体详情" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/show_attendence_info"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            tools:listitem="@layout/data_analysis_show_attendinfo" />
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

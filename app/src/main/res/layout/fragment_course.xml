@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!--显示月份、日期和周数-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_month"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:gravity="center"
+            android:textSize="16sp" />
+
+        <!--日期和周数-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearlayout_weekday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingRight="16dp"
+                android:paddingTop="4dp"/>
+
+            <LinearLayout
+                android:id="@+id/linearlayout_weeks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--<View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#e95f5f"/>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <!--课程节数-->
+                    <!--<android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_view_course_time"
+                        android:layout_width="40dp"
+                        android:layout_height="600dp" />-->
+                    <LinearLayout
+                        android:id="@+id/linearlayout_course_time"
+                        android:layout_width="40dp"
+                        android:layout_height="600dp"
+                        android:orientation="vertical">
+                    </LinearLayout>
+
+                    <!--课表内容-->
+                    <com.srtianxia.bleattendance.widget.CourseTableView
+                        android:id="@+id/course_tab_view_course"
+                        android:layout_width="match_parent"
+                        android:layout_height="600dp">
+                    </com.srtianxia.bleattendance.widget.CourseTableView>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>
