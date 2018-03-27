@@ -81,6 +81,7 @@ public class LoginFragment extends BaseFragment implements LoginPresenter.ILogin
 
     @OnClick(R.id.btn_login)
     void clickToStudent() {
+        handleSuccess();
         // todo 先放在这儿 这里保存的逻辑应该移动到model层
         if ("".equals(getStuNum())) {
             ToastUtil.show(getActivity(), getResources().getString(R.string.login_error_name_null), true);

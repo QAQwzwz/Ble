@@ -4,13 +4,13 @@ apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 27
+    buildToolsVersion '26.0.3'
 
     defaultConfig {
         applicationId "com.srtianxia.bleattendance"
         minSdkVersion 21
-        targetSdkVersion 24
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
@@ -34,7 +34,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile project(':rxperipheral')
-    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+    compile 'com.jakewharton:butterknife-compiler:8.2.1'
     compile rootProject.ext.appcompat_v7
     compile rootProject.ext.android_design
     compile rootProject.ext.android_recyclerView
@@ -43,7 +43,7 @@ dependencies {
     compile rootProject.ext.retrofitRxJavaAdapter
     compile 'com.jakewharton:butterknife:8.2.1'
     compile 'com.google.dagger:dagger:2.6'
-    apt 'com.google.dagger:dagger-compiler:2.6'
+    compile 'com.google.dagger:dagger-compiler:2.6'
     compile 'org.glassfish:javax.annotation:10.0-b28'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.polidea.rxandroidble:rxandroidble:1.1.0'
