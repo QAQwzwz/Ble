@@ -3,11 +3,12 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:3.2.0-alpha11'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-        classpath 'me.tatarka:gradle-retrolambda:3.3.1'
+        classpath 'me.tatarka:gradle-retrolambda:3.6.0'
         classpath "io.realm:realm-gradle-plugin:2.2.0"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -17,23 +18,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-    }
-
-    apply plugin: 'checkstyle'
-
-    checkstyle {
-        toolVersion '6.1.1'
-        showViolations true
-    }
-
-    task checkstyle(type: Checkstyle) {
-        source 'src'
-        include '**/*.java'
-        exclude '**/gen/**'
-        ignoreFailures false
-        configFile new File(rootDir, "checkstyle.xml")
-        // empty classpath
-        classpath = files()
+        google()
     }
 
 }
@@ -42,14 +27,14 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-def supportVersion = "25.0.0"
-def retrofitVersion = "2.1.0"
-
-ext {
-    appcompat_v7 = "com.android.support:appcompat-v7:${supportVersion}";
-    android_design = "com.android.support:design:${supportVersion}"
-    android_recyclerView = "com.android.support:recyclerview-v7:${supportVersion}"
-    retrofit = "com.squareup.retrofit2:retrofit:${retrofitVersion}"
-    retrofitGsonConverer = "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
-    retrofitRxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}"
-}
+//def supportVersion = "25.0.0"
+//def retrofitVersion = "2.1.0"
+//
+//ext {
+//    appcompat_v7 = "com.android.support:appcompat-v7:${supportVersion}"
+//    android_design = "com.android.support:design:${supportVersion}"
+//    android_recyclerView = "com.android.support:recyclerview-v7:${supportVersion}"
+//    retrofit = "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+//    retrofitGsonConverer = "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+//    retrofitRxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}"
+//}

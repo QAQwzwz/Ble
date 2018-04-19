@@ -25,7 +25,7 @@ public class MainActivity extends BaseActivity {
 
     private void openBlueTooth() {
         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (!mBluetoothAdapter.isEnabled()) {
+        if (mBluetoothAdapter != null && !mBluetoothAdapter.isEnabled()) {
             Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(intent, Constant.REQUEST_CODE_BLUE_OPEN);
         }
