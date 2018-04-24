@@ -15,7 +15,7 @@
     <!--<string name="new_base_url">http://www.redleaf.wang/api/</string>-->
     <!--本地测试接口-->
     <!--<string name="new_base_url">http://192.168.1.107:8080/api/</string>-->
-    
+
     <!--<添加功能后的后台接口>-->
     <string name="new_base_url">http://123.207.9.187/api/</string>
 

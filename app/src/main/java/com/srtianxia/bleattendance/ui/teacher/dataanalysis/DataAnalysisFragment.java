@@ -2,40 +2,64 @@ package com.srtianxia.bleattendance.ui.teacher.dataanalysis;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.srtianxia.bleattendance.R;
-import com.srtianxia.bleattendance.base.view.BaseFragment;
-
-import butterknife.BindView;
+import com.srtianxia.bleattendance.ui.teacher.dataanalysis.attStatistics.AttStatisticsActivity;
+import com.srtianxia.bleattendance.ui.teacher.dataanalysis.courseStatistics.CourseStatisticsActivity;
 
 /**
  * Created by xiezh on 2018/3/3.
  */
 
-public class DataAnalysisFragment extends BaseFragment implements View.OnClickListener{
+public class DataAnalysisFragment extends Fragment {
 
-    @BindView(R.id.data_menu_one)
-    TextView menuOne;
-    @BindView(R.id.data_menu_two)
-    TextView menuTwo;
-    @BindView(R.id.data_menu_thr)
-    TextView menuThr;
-    @BindView(R.id.data_menu_for)
-    TextView menuFor;
+    private RecyclerView recyclerView;
+    private Adapter adapter;
 
+    @Nullable
     @Override
-    protected void initView() {
-        menuOne.setOnClickListener(this);
-        menuTwo.setOnClickListener(this);
-        menuThr.setOnClickListener(this);
-        menuFor.setOnClickListener(this);
+    public View onCreateView(LayoutInflater inflater,
+                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_tea_before_dataanalysis, container, false);
     }
 
     @Override
-    protected int getLayoutRes() {
-        return R.layout.fragment_tea_before_dataanalysis;
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        recyclerView = getView().findViewById(R.id.teacherDataChooseRV);
+        adapter = new Adapter();
+        adapter.setClickListener(new Adapter.ClickListener() {
+            @Override
+            public void click(Adapter.ViewHolder viewHolder, int position) {
+                if (position == 0) {
+                    viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivity(new Intent(getContext(), AttStatisticsActivity.class));
+                        }
+                    });
+                } else if (position == 1) {
+                    viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivity(new Intent(getContext(), CourseStatisticsActivity.class));
+                        }
+                    });
+                }
+            }
+        });
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     public static DataAnalysisFragment newInstance() {
@@ -45,27 +69,50 @@ public class DataAnalysisFragment extends BaseFragment implements View.OnClickLi
         return fragment;
     }
 
+}
+
+class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
+
+    private String[] strings = {"考勤统计", "课程数据"};
+    private int[] imgs = {R.mipmap.ic_teacher_arrivedata, R.mipmap.ic_teacher_coursedata};
+    private ClickListener clickListener;
+
+    public interface ClickListener {
+        void click(ViewHolder viewHolder, int position);
+    }
+
+    public void setClickListener(ClickListener clickListener) {
+        this.clickListener = clickListener;
+    }
+
+    @NonNull
     @Override
-    public void onClick(View v) {
-        int choose = 0;
-        switch (v.getId()){
-            case R.id.data_menu_one:
-                choose =1;
-                break;
-            case R.id.data_menu_two:
-                choose =2;
-                break;
-            case R.id.data_menu_thr:
-                choose =3;
-                break;
-            case R.id.data_menu_for:
-                choose =4;
-                break;
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.teacher_main_choose_item, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.textView.setText(strings[position]);
+        holder.imageView.setImageResource(imgs[position]);
+        if (clickListener != null) clickListener.click(holder, position);
+    }
+
+    @Override
+    public int getItemCount() {
+        return 2;
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView textView;
+        private ImageView imageView;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            this.textView = itemView.findViewById(R.id.teacher_choose_item_text);
+            this.imageView = itemView.findViewById(R.id.teacher_choose_item_img);
         }
-
-        Intent intent = new Intent(this.getContext(),ShowDataActivity.class);
-        intent.putExtra("choose",choose);
-        startActivity(intent);
-
     }
 }

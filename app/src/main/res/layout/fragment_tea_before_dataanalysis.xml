@@ -5,79 +5,84 @@
     android:layout_height="match_parent"
     android:gravity="center">
 
-        <FrameLayout
-            android:id="@+id/framelayout_before"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/teacherDataChooseRV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-            <include layout="@layout/include_net_error"/>
+        <!--<FrameLayout-->
+            <!--android:id="@+id/framelayout_before"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <!--<include layout="@layout/include_net_error"/>-->
 
-                <LinearLayout
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+            <!--<LinearLayout-->
+                <!--android:orientation="vertical"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent">-->
 
-                    <TextView
-                        android:id="@+id/data_menu_one"
-                        android:gravity="center"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_marginRight="1dp"
-                        android:layout_marginBottom="1dp"
-                        android:text="@string/data_menu_one"
-                        android:background="@color/colorPrimary"
-                        />
-                    <TextView
-                        android:id="@+id/data_menu_two"
-                        android:gravity="center"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_marginLeft="1dp"
-                        android:layout_marginBottom="1dp"
-                        android:text="@string/data_menu_two"
-                        android:background="@color/colorPrimary"
-                        />
-                </LinearLayout>
+                <!--<LinearLayout-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content">-->
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    <!--<TextView-->
+                        <!--android:id="@+id/data_menu_one"-->
+                        <!--android:gravity="center"-->
+                        <!--android:layout_width="150dp"-->
+                        <!--android:layout_height="150dp"-->
+                        <!--android:layout_marginRight="1dp"-->
+                        <!--android:layout_marginBottom="1dp"-->
+                        <!--android:text="@string/data_menu_one"-->
+                        <!--android:background="@color/colorPrimary"-->
+                        <!--/>-->
+                    <!--<TextView-->
+                        <!--android:id="@+id/data_menu_two"-->
+                        <!--android:gravity="center"-->
+                        <!--android:layout_width="150dp"-->
+                        <!--android:layout_height="150dp"-->
+                        <!--android:layout_marginLeft="1dp"-->
+                        <!--android:layout_marginBottom="1dp"-->
+                        <!--android:text="@string/data_menu_two"-->
+                        <!--android:background="@color/colorPrimary"-->
+                        <!--/>-->
+                <!--</LinearLayout>-->
 
-                    <TextView
-                        android:id="@+id/data_menu_thr"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_marginRight="1dp"
-                        android:layout_marginTop="1dp"
-                        android:background="@color/colorPrimary"
-                        android:gravity="center"
-                        android:text="@string/data_menu_thr" />
+                <!--<LinearLayout-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:gravity="center"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content">-->
 
-                    <TextView
-                        android:id="@+id/data_menu_for"
-                        android:gravity="center"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_marginTop="1dp"
-                        android:layout_marginLeft="1dp"
-                        android:text="@string/data_menu_for"
-                        android:background="@color/colorPrimary"
-                        />
-                </LinearLayout>
+                    <!--<TextView-->
+                        <!--android:id="@+id/data_menu_thr"-->
+                        <!--android:layout_width="150dp"-->
+                        <!--android:layout_height="150dp"-->
+                        <!--android:layout_marginRight="1dp"-->
+                        <!--android:layout_marginTop="1dp"-->
+                        <!--android:background="@color/colorPrimary"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="@string/data_menu_thr" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/data_menu_for"-->
+                        <!--android:gravity="center"-->
+                        <!--android:layout_width="150dp"-->
+                        <!--android:layout_height="150dp"-->
+                        <!--android:layout_marginTop="1dp"-->
+                        <!--android:layout_marginLeft="1dp"-->
+                        <!--android:text="@string/data_menu_for"-->
+                        <!--android:background="@color/colorPrimary"-->
+                        <!--/>-->
+                <!--</LinearLayout>-->
 
 
 
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
-        </FrameLayout>
+        <!--</FrameLayout>-->
 </RelativeLayout>
