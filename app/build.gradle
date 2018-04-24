@@ -11,6 +11,7 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
     }
     buildTypes {
 
@@ -32,14 +33,14 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile project(':rxperipheral')
-//    compile 'com.jakewharton:butterknife-compiler:8.2.1'
-    compile "com.android.support:appcompat-v7:27.1.0"
+    compile 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile "com.android.support:appcompat-v7:27.1.1"
     compile "com.android.support:design:27.1.0"
     compile "com.android.support:recyclerview-v7:27.1.0"
     compile "com.squareup.retrofit2:retrofit:2.4.0"
     compile "com.squareup.retrofit2:converter-gson:2.3.0"
     compile "com.squareup.retrofit2:adapter-rxjava:2.3.0"
-    compile 'com.jakewharton:butterknife:8.2.1'
+    compile 'com.jakewharton:butterknife:8.8.1'
     //dagger
     implementation 'com.google.dagger:dagger:2.14.1'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.14.1'

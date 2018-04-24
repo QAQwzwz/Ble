@@ -17,7 +17,7 @@
     <!--<string name="new_base_url">http://192.168.1.107:8080/api/</string>-->
     
     <!--<添加功能后的后台接口>-->
-    <string name="new_base_url">http://40.125.169.206:80/api/</string>
+    <string name="new_base_url">http://123.207.9.187/api/</string>
 
     <!-- Adv -->
     <string name="label_advertisingStatus">Advertising Status</string>
