@@ -16,6 +16,15 @@ public class AttendListEntity {
     public String status;
     public List<Attend> data;
 
+    @Override
+    public String toString() {
+        return "AttendListEntity{" +
+                "message='" + message + '\'' +
+                ", status='" + status + '\'' +
+                ", data=" + data +
+                '}';
+    }
+
     public class Attend{
         public String stuNum;
         public String stuName;
@@ -38,5 +47,19 @@ public class AttendListEntity {
 
         public Integer count = 1;
 
+        @Override
+        public String toString() {
+            return "Attend{" +
+                    "stuNum='" + stuNum + '\'' +
+                    ", stuName='" + stuName + '\'' +
+                    ", course='" + course + '\'' +
+                    ", grade='" + grade + '\'' +
+                    ", week='" + week + '\'' +
+                    ", class_='" + class_ + '\'' +
+                    ", status='" + status + '\'' +
+                    ", date='" + date + '\'' +
+                    ", count=" + count +
+                    '}';
+        }
     }
 }

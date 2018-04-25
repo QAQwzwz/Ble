@@ -14,11 +14,33 @@ public class StuAttInfoEntity {
     public Statistics statistics;
     public List<Data> data;
 
+    @Override
+    public String toString() {
+        return "StuAttInfoEntity{" +
+                "status=" + status +
+                ", message='" + message + '\'' +
+                ", stuNum='" + stuNum + '\'' +
+                ", stuName='" + stuName + '\'' +
+                ", statistics=" + statistics +
+                ", data=" + data +
+                '}';
+    }
+
     public static class Statistics{
         public StatisInfo leave;
         public StatisInfo absence;
         public StatisInfo late;
         public StatisInfo leave_early;
+
+        @Override
+        public String toString() {
+            return "Statistics{" +
+                    "leave=" + leave +
+                    ", absence=" + absence +
+                    ", late=" + late +
+                    ", leave_early=" + leave_early +
+                    '}';
+        }
     }
 
     public static class StatisInfo{
@@ -33,6 +55,18 @@ public class StuAttInfoEntity {
         public String status;
         public String jxbID;
         public String course;
+
+        @Override
+        public String toString() {
+            return "Data{" +
+                    "week='" + week + '\'' +
+                    ", hash_day='" + hash_day + '\'' +
+                    ", hash_lesson='" + hash_lesson + '\'' +
+                    ", status='" + status + '\'' +
+                    ", jxbID='" + jxbID + '\'' +
+                    ", course='" + course + '\'' +
+                    '}';
+        }
     }
 
     public static class ShowData{

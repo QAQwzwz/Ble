@@ -38,24 +38,13 @@ public class DataAnalysisFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = getView().findViewById(R.id.teacherDataChooseRV);
         adapter = new Adapter();
-        adapter.setClickListener(new Adapter.ClickListener() {
-            @Override
-            public void click(Adapter.ViewHolder viewHolder, int position) {
-                if (position == 0) {
-                    viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            startActivity(new Intent(getContext(), AttStatisticsActivity.class));
-                        }
-                    });
-                } else if (position == 1) {
-                    viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            startActivity(new Intent(getContext(), CourseStatisticsActivity.class));
-                        }
-                    });
-                }
+        adapter.setClickListener((viewHolder, position) -> {
+            if (position == 0) {
+                viewHolder.itemView.setOnClickListener(v ->
+                        startActivity(new Intent(getContext(), AttStatisticsActivity.class)));
+            } else if (position == 1) {
+                viewHolder.itemView.setOnClickListener(v ->
+                        startActivity(new Intent(getContext(), CourseStatisticsActivity.class)));
             }
         });
         recyclerView.setAdapter(adapter);

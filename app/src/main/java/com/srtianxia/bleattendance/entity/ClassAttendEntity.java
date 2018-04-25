@@ -25,6 +25,22 @@ public class ClassAttendEntity {
         public String class_;
         @SerializedName("COUNT(*)")
         public int count;
+
+        @Override
+        public String toString() {
+            return "Clazz{" +
+                    "class_='" + class_ + '\'' +
+                    ", count=" + count +
+                    '}';
+        }
     }
 
+    @Override
+    public String toString() {
+        return "ClassAttendEntity{" +
+                "message='" + message + '\'' +
+                ", status='" + status + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

@@ -13,6 +13,13 @@ public class DeviceEntity {
         this.address = address;
     }
 
+    @Override
+    public String toString() {
+        return "DeviceEntity{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 
     @Override public boolean equals(Object obj) {
         DeviceEntity entity = (DeviceEntity) obj;

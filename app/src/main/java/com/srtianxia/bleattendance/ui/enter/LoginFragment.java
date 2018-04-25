@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.srtianxia.bleattendance.R;
+import com.srtianxia.bleattendance.StaticData;
 import com.srtianxia.bleattendance.base.view.BaseFragment;
 import com.srtianxia.bleattendance.di.component.DaggerLoginComponent;
 import com.srtianxia.bleattendance.di.module.LoginModule;

@@ -20,6 +20,17 @@ public class StuListEntity {
     @SerializedName("trid")
     private String mTrid;
 
+    @Override
+    public String toString() {
+        return "StuListEntity{" +
+                "mData=" + mData +
+                ", mDataNum=" + mDataNum +
+                ", mMessage='" + mMessage + '\'' +
+                ", mStatus=" + mStatus +
+                ", mTrid='" + mTrid + '\'' +
+                '}';
+    }
+
     public List<StuInfoEntity> getData() {
         return mData;
     }

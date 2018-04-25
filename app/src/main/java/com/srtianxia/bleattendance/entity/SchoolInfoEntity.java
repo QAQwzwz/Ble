@@ -11,4 +11,14 @@ public class SchoolInfoEntity {
     public String status;
     public List<String> key;
     public List<String> value;
+
+    @Override
+    public String toString() {
+        return "SchoolInfoEntity{" +
+                "message='" + message + '\'' +
+                ", status='" + status + '\'' +
+                ", key=" + key +
+                ", value=" + value +
+                '}';
+    }
 }

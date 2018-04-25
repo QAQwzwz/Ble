@@ -12,4 +12,12 @@ public class CourseTimeEntity {
         this.course_time = course_time;
         this.course_time_num = course_time_num;
     }
+
+    @Override
+    public String toString() {
+        return "CourseTimeEntity{" +
+                "course_time='" + course_time + '\'' +
+                ", course_time_num='" + course_time_num + '\'' +
+                '}';
+    }
 }

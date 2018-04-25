@@ -18,6 +18,18 @@ public class NewCourseEntity{
     public String message;                 //"success"
     public List<Course> data;
 
+    @Override
+    public String toString() {
+        return "NewCourseEntity{" +
+                "status=" + status +
+                ", version='" + version + '\'' +
+                ", term='" + term + '\'' +
+                ", stuNum=" + stuNum +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
+    }
+
     public static NewCourseEntity Tea2NewCourse(TeaCourseEntity courseList){
 
         NewCourseEntity newCourseEntity = null;

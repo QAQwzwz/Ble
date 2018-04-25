@@ -12,6 +12,17 @@ public class CourseEntity {
     public int status;
     public String version;
 
+    @Override
+    public String toString() {
+        return "CourseEntity{" +
+                "data=" + data +
+                ", nowWeek='" + nowWeek + '\'' +
+                ", info='" + info + '\'' +
+                ", status=" + status +
+                ", version='" + version + '\'' +
+                '}';
+    }
+
     public static class Course {
         public String stuNum;
         public String term;

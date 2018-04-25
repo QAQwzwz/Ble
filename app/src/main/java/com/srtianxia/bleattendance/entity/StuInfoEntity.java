@@ -25,6 +25,20 @@ public class StuInfoEntity {
     @SerializedName("type")
     private String mType;
 
+    @Override
+    public String toString() {
+        return "StuInfoEntity{" +
+                "mAcademy='" + mAcademy + '\'' +
+                ", mGender='" + mGender + '\'' +
+                ", mGrade='" + mGrade + '\'' +
+                ", mMajor='" + mMajor + '\'' +
+                ", mMajorName='" + mMajorName + '\'' +
+                ", mName='" + mName + '\'' +
+                ", mStuNum='" + mStuNum + '\'' +
+                ", mType='" + mType + '\'' +
+                '}';
+    }
+
     public String getAcademy() {
         return mAcademy;
     }

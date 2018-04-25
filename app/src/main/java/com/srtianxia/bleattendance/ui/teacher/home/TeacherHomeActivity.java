@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.srtianxia.bleattendance.R;
+import com.srtianxia.bleattendance.StaticData;
 import com.srtianxia.bleattendance.base.view.BaseActivity;
 import com.srtianxia.bleattendance.entity.Course;
 import com.srtianxia.bleattendance.ui.MainActivity;
@@ -154,6 +155,7 @@ public class TeacherHomeActivity extends BaseActivity
                 PreferenceManager.getInstance().setString(PreferenceManager.SP_LOGIN_FLAG, "");
                 DataBaseManager.getInstance().deleteTeaCourse();
                 UiHelper.startActivity(this, MainActivity.class);
+                StaticData.instance.cleanData();
                 finish();
                 break;
             case R.id.home:
