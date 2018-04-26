@@ -30,6 +30,9 @@ public class PreferenceManager {
     public static final String SP_IS_TEA_COURSE = "IS_TEA_C";
     public static final String SP_IS_STU_COURSE = "IS_STU_C";
 
+    public static final String NUMBER = "NUMBER";
+    public static final String PASSWORD = "PASSWORD";
+
 
     public static PreferenceManager getInstance() {
         return PreferenceInstance.instance;
@@ -65,14 +68,14 @@ public class PreferenceManager {
         return mSettings.getInt(key, DEFAULT_NUMBER);
     }
 
-    public void setHashSet(String key, HashSet<String> set){
+    public void setHashSet(String key, HashSet<String> set) {
         SharedPreferences.Editor editor = mSettings.edit();
-        editor.putStringSet(key,set);
+        editor.putStringSet(key, set);
         editor.apply();
     }
 
-    public HashSet<String> getHashSet(String key){
-        return (HashSet<String>) mSettings.getStringSet(key,new HashSet<String>());
+    public HashSet<String> getHashSet(String key) {
+        return (HashSet<String>) mSettings.getStringSet(key, new HashSet<String>());
     }
 
 }

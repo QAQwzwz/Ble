@@ -1,10 +1,7 @@
 package com.srtianxia.bleattendance;
 
-import android.text.TextUtils;
-
-import com.srtianxia.bleattendance.entity.CourseEntity;
+import com.srtianxia.bleattendance.entity.TeaCourseEntity;
 import com.srtianxia.bleattendance.utils.PreferenceManager;
-import com.srtianxia.bleattendance.utils.ZiaUtilKt;
 
 /**
  * Created by zia on 2018/4/24.
@@ -14,19 +11,13 @@ public enum StaticData {
     instance;
     private String token;
     private String number;
-    private CourseEntity courseEntity;
+    private String password;
+    private int nowWeek;//当前周数
+    private TeaCourseEntity teaCourseEntity;
 
-    private StaticData() {
-        //妈耶，token居然不会变，其实number和token不需要区分
-        String flag = PreferenceManager.getInstance().getString(PreferenceManager.SP_LOGIN_FLAG, "");
-        if (TextUtils.equals(flag, PreferenceManager.SP_LOGIN_FLAG_STU)) {
-            number = PreferenceManager.getInstance().getString(PreferenceManager.SP_STUDENT_NUMBER, "");
-            token = PreferenceManager.getInstance().getString(PreferenceManager.SP_TOKEN_STUDENT, "");
-        } else if (TextUtils.equals(flag, PreferenceManager.SP_LOGIN_FLAG_TEA)) {
-            number = PreferenceManager.getInstance().getString(PreferenceManager.SP_TEACHER_NUMBER, "");
-            token = PreferenceManager.getInstance().getString(PreferenceManager.SP_TOKEN_TEACHER, "");
-        }
-        ZiaUtilKt.log(this.toString());
+    StaticData() {
+        number = PreferenceManager.getInstance().getString(PreferenceManager.NUMBER, "");
+        password = PreferenceManager.getInstance().getString(PreferenceManager.PASSWORD, "");
     }
 
     @Override
@@ -34,31 +25,55 @@ public enum StaticData {
         return "StaticData{" +
                 "token='" + token + '\'' +
                 ", number='" + number + '\'' +
-                ", courseEntity=" + courseEntity +
+                ", password='" + password + '\'' +
+                ", courseEntity=" + teaCourseEntity +
                 '}';
     }
 
     public void cleanData() {
         token = null;
         number = null;
-        courseEntity = null;
+        teaCourseEntity = null;
     }
 
     public String getToken() {
         return token;
     }
 
-
     public String getNumber() {
         return number;
     }
 
-
-    public CourseEntity getCourseEntity() {
-        return courseEntity;
+    public void setToken(String token) {
+        this.token = token;
     }
 
-    public void setCourseEntity(CourseEntity courseEntity) {
-        this.courseEntity = courseEntity;
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getNowWeek() {
+        return nowWeek;
+    }
+
+    public void setNowWeek(int nowWeek) {
+        this.nowWeek = nowWeek;
+    }
+
+    public TeaCourseEntity getTeaCourseEntity() {
+        return teaCourseEntity;
+    }
+
+    public void setTeaCourseEntity(TeaCourseEntity teaCourseEntity) {
+        this.teaCourseEntity = teaCourseEntity;
+        this.nowWeek = teaCourseEntity.nowWeek;
     }
 }

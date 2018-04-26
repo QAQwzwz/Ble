@@ -22,13 +22,7 @@
             android:name=".ui.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeNoActionbar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppThemeNoActionbar" />
         <activity
             android:name=".ui.teacher.home.TeacherHomeActivity"
             android:screenOrientation="portrait" />
@@ -51,7 +45,17 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity android:name=".ui.teacher.dataanalysis.attStatistics.AttStatisticsActivity" />
-        <activity android:name=".ui.teacher.dataanalysis.courseStatistics.CourseStatisticsActivity"></activity>
+        <activity android:name=".ui.teacher.dataanalysis.courseStatistics.CourseStatisticsActivity" />
+        <activity
+            android:name=".ui.start.StartActivity"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.teacher.dataanalysis.detailAttStatistics.DetailAttActivity" />
     </application>
 
 </manifest>

@@ -55,14 +55,6 @@ public class LoginFragment extends BaseFragment implements LoginPresenter.ILogin
     @Override
     protected void initView() {
         DaggerLoginComponent.builder().loginModule(new LoginModule(this)).build().inject(this);
-        String flag = PreferenceManager.getInstance().getString(PreferenceManager.SP_LOGIN_FLAG, "");
-        if (TextUtils.equals(flag, PreferenceManager.SP_LOGIN_FLAG_STU)) {
-            UiHelper.startActivity(getActivity(), StudentHomeActivity.class);
-            getActivity().finish();
-        } else if (TextUtils.equals(flag, PreferenceManager.SP_LOGIN_FLAG_TEA)) {
-            UiHelper.startActivity(getActivity(), TeacherHomeActivity.class);
-            getActivity().finish();
-        }
     }
 
 

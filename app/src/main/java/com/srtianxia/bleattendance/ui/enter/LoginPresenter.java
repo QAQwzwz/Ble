@@ -1,5 +1,6 @@
 package com.srtianxia.bleattendance.ui.enter;
 
+import com.srtianxia.bleattendance.StaticData;
 import com.srtianxia.bleattendance.base.presenter.BasePresenter;
 import com.srtianxia.bleattendance.base.view.BaseView;
 import com.srtianxia.bleattendance.entity.StudentEntity;
@@ -8,6 +9,7 @@ import com.srtianxia.bleattendance.http.ApiUtil;
 import com.srtianxia.bleattendance.http.api.Api;
 import com.srtianxia.bleattendance.utils.PreferenceManager;
 import com.srtianxia.bleattendance.utils.RxSchedulersHelper;
+import com.srtianxia.bleattendance.utils.ZiaUtilKt;
 
 /**
  * Created by srtianxia on 2016/7/31.
@@ -37,6 +39,7 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.ILoginView> {
     private void loginTeacherSuccess(TeacherEntity entity) {
         PreferenceManager.getInstance().setString(PreferenceManager.SP_TOKEN_TEACHER, entity.data);
         PreferenceManager.getInstance().setString(PreferenceManager.SP_TEACHER_NUMBER, getView().getStuNum());
+        saveData(getView().getStuNum(), getView().getPassword(), entity.data);
         getView().teacherLoginSuccess();
     }
 
@@ -54,7 +57,17 @@ public class LoginPresenter extends BasePresenter<LoginPresenter.ILoginView> {
     private void loginStudentSuccess(StudentEntity entity) {
         PreferenceManager.getInstance().setString(PreferenceManager.SP_TOKEN_STUDENT, entity.data);
         PreferenceManager.getInstance().setInteger(PreferenceManager.SP_STUDENT_NUMBER, Integer.parseInt(getView().getStuNum()));
+        saveData(getView().getStuNum(), getView().getPassword(), entity.data);
         getView().studentLoginSuccess();
+    }
+
+    private void saveData(String username, String password, String token) {
+        PreferenceManager.getInstance().setString(PreferenceManager.NUMBER, username);
+        PreferenceManager.getInstance().setString(PreferenceManager.PASSWORD, password);
+        StaticData.instance.setNumber(username);
+        StaticData.instance.setPassword(password);
+        StaticData.instance.setToken(token);
+        ZiaUtilKt.log(StaticData.instance.toString());
     }
 
     private void loginStudentFailure(Throwable throwable) {
