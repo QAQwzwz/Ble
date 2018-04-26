@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.srtianxia.bleattendance.R;
+import com.srtianxia.bleattendance.StaticData;
 import com.srtianxia.bleattendance.base.view.BaseActivity;
 import com.srtianxia.bleattendance.ui.MainActivity;
 import com.srtianxia.bleattendance.ui.course.CourseContainerFragment;
@@ -99,6 +100,7 @@ public class StudentHomeActivity extends BaseActivity
             case R.id.action_logout:
                 PreferenceManager.getInstance().setString(PreferenceManager.SP_TOKEN_STUDENT, "");
                 PreferenceManager.getInstance().setString(PreferenceManager.SP_LOGIN_FLAG, "");
+                StaticData.instance.cleanData();
                 DataBaseManager.getInstance().deleteStuCourse();
                 UiHelper.startActivity(this, MainActivity.class);
                 finish();

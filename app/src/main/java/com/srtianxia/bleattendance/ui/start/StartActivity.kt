@@ -21,8 +21,12 @@ class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         log(StaticData.instance.toString())
+        goPage()
+    }
+
+    private fun goPage() {
         //如果没有保存账号密码，直接进入登录界面
-        if (StaticData.instance.number == null || StaticData.instance.password == null) {
+        if (StaticData.instance.number == "" || StaticData.instance.password == "") {
             startActivity(Intent(this@StartActivity, MainActivity::class.java))
             finish()
             return
@@ -93,4 +97,29 @@ class StartActivity : AppCompatActivity() {
                     })
         }
     }
+
+    /**
+     * 蓝牙请求
+     * 登录时不请求，在连接时请求
+     */
+//    private fun openBlueTooth() {
+//        val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
+//        enableBtIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+//        startActivity(enableBtIntent)
+//    }
+//
+//    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (requestCode == Constant.REQUEST_CODE_BLUE_OPEN) {
+//            if (resultCode == Activity.RESULT_OK) {
+//                ToastUtil.show(this, "蓝牙已开启", true)
+//                log("ok")
+//            } else if (resultCode == Activity.RESULT_CANCELED) {
+//                ToastUtil.show(this, "必须使用蓝牙", true)
+//                log("cancel")
+//            }else{
+//                log("else")
+//            }
+//        }
+//    }
 }

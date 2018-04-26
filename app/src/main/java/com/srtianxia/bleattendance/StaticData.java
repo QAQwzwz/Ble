@@ -34,6 +34,8 @@ public enum StaticData {
         token = null;
         number = null;
         teaCourseEntity = null;
+        PreferenceManager.getInstance().setString(PreferenceManager.NUMBER, "");
+        PreferenceManager.getInstance().setString(PreferenceManager.PASSWORD, "");
     }
 
     public String getToken() {

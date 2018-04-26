@@ -3,7 +3,6 @@ package com.srtianxia.bleattendance.ui.enter;
 import android.animation.Animator;
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -13,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.srtianxia.bleattendance.R;
-import com.srtianxia.bleattendance.StaticData;
 import com.srtianxia.bleattendance.base.view.BaseFragment;
 import com.srtianxia.bleattendance.di.component.DaggerLoginComponent;
 import com.srtianxia.bleattendance.di.module.LoginModule;
@@ -63,23 +61,23 @@ public class LoginFragment extends BaseFragment implements LoginPresenter.ILogin
         if ("".equals(getStuNum())) {
             ToastUtil.show(getActivity(), getResources().getString(R.string.login_error_name_null), true);
             return;
-        }else if ("".equals(getPassword())){
+        } else if ("".equals(getPassword())) {
             ToastUtil.show(getActivity(), getResources().getString(R.string.login_error_password_null), true);
             return;
         }
-        DialogUtils.getInstance().showProgressDialog(getActivity(), getResources().getString(R.string.login_dialog));
         mPresenter.teacherLogin();
+        btnLogin.executeLogin();
+        tvLinkTeacherEnter.setClickable(false);
     }
 
 
     @OnClick(R.id.btn_login)
     void clickToStudent() {
-        handleSuccess();
         // todo 先放在这儿 这里保存的逻辑应该移动到model层
         if ("".equals(getStuNum())) {
             ToastUtil.show(getActivity(), getResources().getString(R.string.login_error_name_null), true);
             return;
-        }else if ("".equals(getPassword())){
+        } else if ("".equals(getPassword())) {
             ToastUtil.show(getActivity(), getResources().getString(R.string.login_error_password_null), true);
             return;
         }
@@ -94,7 +92,6 @@ public class LoginFragment extends BaseFragment implements LoginPresenter.ILogin
     }
 
 
-    //todo 要加上格式处理
     @Override
     public String getStuNum() {
         return inputUsername.getText().toString();
@@ -110,15 +107,21 @@ public class LoginFragment extends BaseFragment implements LoginPresenter.ILogin
     @Override
     public void studentLoginSuccess() {
         PreferenceManager.getInstance().setString(PreferenceManager.SP_LOGIN_FLAG, PreferenceManager.SP_LOGIN_FLAG_STU);
-        btnLogin.postDelayed(this::handleSuccess, 1000);
+        btnLogin.postDelayed(() -> handleSuccess(() -> {
+            startActivity(new Intent(getActivity(), StudentHomeActivity.class),
+                    ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
+            hideAllView();
+            getActivity().finishAfterTransition();
+            getActivity().finish();
+        }), 1000);
     }
 
     @Override
     public void studentLoginFailure() {
-        if (NetWorkUtils.isNetworkConnected(getActivity())){
-            ToastUtil.show(getActivity(),getResources().getString(R.string.login_error_passwork_error), true);
-        }else {
-            ToastUtil.show(getActivity(), getResources().getString(R.string.login_error_not_network),true);
+        if (NetWorkUtils.isNetworkConnected(getActivity())) {
+            ToastUtil.show(getActivity(), getResources().getString(R.string.login_error_passwork_error), true);
+        } else {
+            ToastUtil.show(getActivity(), getResources().getString(R.string.login_error_not_network), true);
         }
         // 这边登录失败还要变回按钮才行
         btnLogin.executeLoginFailure();
@@ -132,24 +135,32 @@ public class LoginFragment extends BaseFragment implements LoginPresenter.ILogin
 
     @Override
     public void teacherLoginSuccess() {
-        DialogUtils.getInstance().dismissProgressDialog();
         PreferenceManager.getInstance().setString(PreferenceManager.SP_LOGIN_FLAG, PreferenceManager.SP_LOGIN_FLAG_TEA);
-        UiHelper.startActivity(getActivity(), TeacherHomeActivity.class);
-        getActivity().finish();
+        btnLogin.postDelayed(() -> handleSuccess(() -> {
+            startActivity(new Intent(getActivity(), TeacherHomeActivity.class),
+                    ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
+            hideAllView();
+            getActivity().finishAfterTransition();
+            getActivity().finish();
+        }), 1000);
     }
 
     @Override
     public void teacherLoginFailure() {
-        if (NetWorkUtils.isNetworkConnected(getActivity())){
-            ToastUtil.show(getActivity(),getResources().getString(R.string.login_error_passwork_error), true);
-        }else {
-            ToastUtil.show(getActivity(), getResources().getString(R.string.login_error_not_network),true);
+        if (NetWorkUtils.isNetworkConnected(getActivity())) {
+            ToastUtil.show(getActivity(), getResources().getString(R.string.login_error_passwork_error), true);
+        } else {
+            ToastUtil.show(getActivity(), getResources().getString(R.string.login_error_not_network), true);
         }
-        DialogUtils.getInstance().dismissProgressDialog();
+        tvLinkTeacherEnter.setClickable(false);
     }
 
 
-    private void handleSuccess() {
+    private interface HandleSuccess {
+        void onAnimEnd();
+    }
+
+    private void handleSuccess(HandleSuccess handleSuccess) {
         float finalRadius = (float) Math.hypot(container.getWidth(), container.getHeight());
         int[] location = new int[2];
         btnLogin.getLocationOnScreen(location);
@@ -167,21 +178,15 @@ public class LoginFragment extends BaseFragment implements LoginPresenter.ILogin
 
             }
 
-
             @Override
             public void onAnimationEnd(Animator animator) {
-                startActivity(new Intent(getActivity(), StudentHomeActivity.class),
-                        ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
-                getActivity().finishAfterTransition();
-                getActivity().finish();
+                handleSuccess.onAnimEnd();
             }
-
 
             @Override
             public void onAnimationCancel(Animator animator) {
 
             }
-
 
             @Override
             public void onAnimationRepeat(Animator animator) {
@@ -189,7 +194,6 @@ public class LoginFragment extends BaseFragment implements LoginPresenter.ILogin
             }
         });
         animator.start();
-        hideAllView();
     }
 
 
