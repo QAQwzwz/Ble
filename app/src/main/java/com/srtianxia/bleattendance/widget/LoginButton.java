@@ -179,8 +179,8 @@ public class LoginButton extends View {
 
 
     public void executeLogin() {
-        this.setClickable(false);
-        isOnceClick = true;
+//        this.setClickable(false);
+//        isOnceClick = true;
         isFailure = false;
         startTranslation();
     }

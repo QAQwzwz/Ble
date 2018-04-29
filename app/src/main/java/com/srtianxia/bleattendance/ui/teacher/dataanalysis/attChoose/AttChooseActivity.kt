@@ -1,4 +1,4 @@
-package com.srtianxia.bleattendance.ui.teacher.dataanalysis.attStatistics
+package com.srtianxia.bleattendance.ui.teacher.dataanalysis.attChoose
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -15,18 +15,16 @@ import com.srtianxia.bleattendance.R
 import com.srtianxia.bleattendance.StaticData
 import com.srtianxia.bleattendance.entity.TeaCourseEntity
 import com.srtianxia.bleattendance.http.Service
-import com.srtianxia.bleattendance.ui.teacher.dataanalysis.detailAttStatistics.DetailAttActivity
+import com.srtianxia.bleattendance.ui.teacher.dataanalysis.courseStatistics.CourseStatisticsActivity
+import com.srtianxia.bleattendance.ui.teacher.dataanalysis.tjStatistics.TjActivity
 import com.srtianxia.bleattendance.utils.RxSchedulersHelper
 import com.srtianxia.bleattendance.utils.log
 import com.srtianxia.bleattendance.utils.toast
-import kotlinx.android.synthetic.main.activity_att_statistics.*
+import kotlinx.android.synthetic.main.activity_att_choose.*
 import kotlinx.android.synthetic.main.appbar_layout.*
 import rx.Observer
 
-/**
- * 考勤统计
- */
-class AttStatisticsActivity : AppCompatActivity() {
+class AttChooseActivity : AppCompatActivity() {
 
     private lateinit var progressDialog: ProgressDialog
     private lateinit var adapter: Adapter
@@ -34,29 +32,40 @@ class AttStatisticsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.navigationBarColor = ContextCompat.getColor(this, R.color.colorPrimary)
-        setContentView(R.layout.activity_att_statistics)
-
+        setContentView(R.layout.activity_att_choose)
+        val flag = intent.getIntExtra("flag", -1)
         tv_toolbar_title.text = "选择课程"
 
+        //todo 假定周数是8
         val week = "8"
 
-        progressDialog = ProgressDialog.show(this@AttStatisticsActivity, "正在加载", "正在获取课程信息")
+        progressDialog = ProgressDialog.show(this@AttChooseActivity, "正在加载", "正在获取课程信息")
 
         adapter = Adapter()
         adapter.setOnItemClicked(object : Adapter.OnItemClicked {
             override fun onClick(course: Course, holder: Adapter.ViewHolder) {
+                if (flag == -1) return
                 holder.room.text = course.room
                 holder.day.text = course.day
                 holder.name.text = course.name
                 holder.itemView.setOnClickListener {
-                    val intent = Intent(this@AttStatisticsActivity, DetailAttActivity::class.java)
-                    intent.putExtra("jxbId", course.jxbId)
-                    startActivity(intent)
+                    if (flag == 0) {
+                        val intent = Intent(this@AttChooseActivity, TjActivity::class.java)
+                        intent.putExtra("jxbId", course.jxbId)
+                        startActivity(intent)
+                    } else if (flag == 1) {
+                        val intent = Intent(this@AttChooseActivity, CourseStatisticsActivity::class.java)
+                        intent.putExtra("jxbId", course.jxbId)
+                        startActivity(intent)
+                    }
+
                 }
+
+
             }
         })
 
-        att_statistics_rv.layoutManager = LinearLayoutManager(this@AttStatisticsActivity)
+        att_statistics_rv.layoutManager = LinearLayoutManager(this@AttChooseActivity)
         att_statistics_rv.adapter = adapter
 
         Service.instance.api
@@ -67,7 +76,7 @@ class AttStatisticsActivity : AppCompatActivity() {
                     override fun onError(e: Throwable?) {
                         e?.printStackTrace()
                         progressDialog.dismiss()
-                        toast(this@AttStatisticsActivity, "获取失败，请打检查网络")
+                        toast(this@AttChooseActivity, "获取失败，请打检查网络")
                     }
 
                     override fun onNext(t: TeaCourseEntity?) {

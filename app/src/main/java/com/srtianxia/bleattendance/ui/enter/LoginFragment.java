@@ -5,6 +5,8 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.view.View;
 import android.view.ViewAnimationUtils;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -83,6 +85,7 @@ public class LoginFragment extends BaseFragment implements LoginPresenter.ILogin
         }
         mPresenter.studentLogin();
         btnLogin.executeLogin();
+        btnLogin.setClickable(false);
     }
 
 
@@ -152,7 +155,8 @@ public class LoginFragment extends BaseFragment implements LoginPresenter.ILogin
         } else {
             ToastUtil.show(getActivity(), getResources().getString(R.string.login_error_not_network), true);
         }
-        tvLinkTeacherEnter.setClickable(false);
+        btnLogin.executeLoginFailure();
+        tvLinkTeacherEnter.setClickable(true);
     }
 
 

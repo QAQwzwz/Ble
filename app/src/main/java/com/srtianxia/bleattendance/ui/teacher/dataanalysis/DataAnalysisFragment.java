@@ -14,13 +14,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.srtianxia.bleattendance.R;
-import com.srtianxia.bleattendance.ui.teacher.dataanalysis.attStatistics.AttStatisticsActivity;
-import com.srtianxia.bleattendance.ui.teacher.dataanalysis.courseStatistics.CourseStatisticsActivity;
+import com.srtianxia.bleattendance.ui.teacher.dataanalysis.attChoose.AttChooseActivity;
 
 /**
  * Created by xiezh on 2018/3/3.
  */
 
+/**
+ * 老师界面的主要fragment
+ */
 public class DataAnalysisFragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -39,13 +41,9 @@ public class DataAnalysisFragment extends Fragment {
         recyclerView = getView().findViewById(R.id.teacherDataChooseRV);
         adapter = new Adapter();
         adapter.setClickListener((viewHolder, position) -> {
-            if (position == 0) {
-                viewHolder.itemView.setOnClickListener(v ->
-                        startActivity(new Intent(getContext(), AttStatisticsActivity.class)));
-            } else if (position == 1) {
-                viewHolder.itemView.setOnClickListener(v ->
-                        startActivity(new Intent(getContext(), CourseStatisticsActivity.class)));
-            }
+            Intent intent = new Intent(getContext(), AttChooseActivity.class);
+            intent.putExtra("flag", position);
+            startActivity(intent);
         });
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -85,7 +83,9 @@ class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textView.setText(strings[position]);
         holder.imageView.setImageResource(imgs[position]);
-        if (clickListener != null) clickListener.click(holder, position);
+        if (clickListener != null) {
+            holder.itemView.setOnClickListener(v -> clickListener.click(holder, holder.getAdapterPosition()));
+        }
     }
 
     @Override

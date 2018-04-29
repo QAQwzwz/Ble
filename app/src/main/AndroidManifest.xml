@@ -8,11 +8,12 @@
     <uses-permission
         android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
-    <!--蓝牙-->
+    <!-- 蓝牙 -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <uses-feature
         android:name="android.hardware.bluetooth_le"
         android:required="true" />
@@ -50,7 +51,7 @@
             android:label="@string/title_activity_show_data"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ui.teacher.dataanalysis.attStatistics.AttStatisticsActivity" />
+        <activity android:name=".ui.teacher.dataanalysis.attChoose.AttStatisticsActivity" />
         <activity android:name=".ui.teacher.dataanalysis.courseStatistics.CourseStatisticsActivity" />
         <activity android:name=".ui.start.StartActivity">
             <intent-filter>
@@ -59,7 +60,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.teacher.dataanalysis.detailAttStatistics.DetailAttActivity" />
+        <activity android:name=".ui.teacher.dataanalysis.tjStatistics.TjActivity" />
+        <activity android:name=".ui.teacher.dataanalysis.attDetail.AttDetailActivity" />
+        <activity android:name=".ui.teacher.dataanalysis.attChoose.AttChooseActivity"></activity>
     </application>
 
 </manifest>

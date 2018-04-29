@@ -90,6 +90,12 @@ public interface Api {
                                                 @Query("hash_day") int hash_day,
                                                 @Query("hash_lesson") int hash_lesson, @Query("trid") String trid);
 
+    //获取某个课程的考勤
+    @GET("teacher/attendance")
+    Observable<AttInfoEntity> getCourseAttendance(@Query("token") String token,
+                                                  @Query("jxbID") String jxbID,
+                                                  @Query("week") int week);
+
     // 获取一个班的人列表
     @GET("teacher/stulist")
     Observable<StuListEntity> getStuList(@Query("token") String token,
@@ -149,11 +155,11 @@ public interface Api {
 
     @GET("teacher/dataanalysis/schoolYear")
     Observable<SchoolInfoEntity> getSchoolYear(@Query("token") String token,
-                                            @Query("trid") String trid);
+                                               @Query("trid") String trid);
 
     @GET("teacher/dataanalysis/schoolGrade")
     Observable<SchoolInfoEntity> getSchoolGrade(@Query("token") String token,
-                                             @Query("trid") String trid);
+                                                @Query("trid") String trid);
 
     @GET("teacher/dataanalysis/schoolType")
     Observable<SchoolInfoEntity> getSchoolType(@Query("token") String token,
@@ -161,10 +167,10 @@ public interface Api {
 
     @GET("teacher/dataanalysis/schoolMonth")
     Observable<SchoolInfoEntity> getSchoolMonth(@Query("token") String token,
-                                             @Query("trid") String trid);
+                                                @Query("trid") String trid);
 
     @GET("teacher/dataanalysis/schoolInstitute")
     Observable<SchoolInfoEntity> getSchoolInstitute(@Query("token") String token,
-                                                 @Query("trid") String trid);
+                                                    @Query("trid") String trid);
 
 }

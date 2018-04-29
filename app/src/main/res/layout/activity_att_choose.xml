@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.teacher.dataanalysis.attStatistics.AttStatisticsActivity">
+    tools:context=".ui.teacher.dataanalysis.attChoose.AttChooseActivity">
 
     <include layout="@layout/appbar_layout" />
 

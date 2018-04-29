@@ -1,4 +1,4 @@
-package com.srtianxia.bleattendance.ui.teacher.dataanalysis.detailAttStatistics
+package com.srtianxia.bleattendance.ui.teacher.dataanalysis.tjStatistics
 
 
 import android.os.Bundle

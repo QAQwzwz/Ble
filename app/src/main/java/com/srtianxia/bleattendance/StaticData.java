@@ -2,6 +2,7 @@ package com.srtianxia.bleattendance;
 
 import com.srtianxia.bleattendance.entity.TeaCourseEntity;
 import com.srtianxia.bleattendance.utils.PreferenceManager;
+import com.srtianxia.bleattendance.utils.ZiaUtilKt;
 
 /**
  * Created by zia on 2018/4/24.
@@ -48,6 +49,7 @@ public enum StaticData {
 
     public void setToken(String token) {
         this.token = token;
+        ZiaUtilKt.log(this.toString());
     }
 
     public void setNumber(String number) {

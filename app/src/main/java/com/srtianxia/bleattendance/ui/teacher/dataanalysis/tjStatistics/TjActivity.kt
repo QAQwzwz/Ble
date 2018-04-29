@@ -1,25 +1,42 @@
-package com.srtianxia.bleattendance.ui.teacher.dataanalysis.detailAttStatistics
+package com.srtianxia.bleattendance.ui.teacher.dataanalysis.tjStatistics
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import com.srtianxia.bleattendance.R
 import kotlinx.android.synthetic.main.activity_detail_att.*
 import kotlinx.android.synthetic.main.appbar_layout.*
 
-class DetailAttActivity : AppCompatActivity() {
+/**
+ * 统计页面
+ * TjdayFragment 日统计fragment
+ * TjweekFragment 周统计fragment
+ * TjmonthFragment 月统计fragment
+ */
+class TjActivity : AppCompatActivity() {
 
     private lateinit var jxbId: String
+    //直接写了三个fragment，因为打卡明细在日统计和周统计的接口可能不一样
+    private val tjdayFragment = TjdayFragment()
+    private val tjweekFragment = TjweekFragment()
+    private val tjmonthFragment = TjmonthFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.colorPrimary)
         setContentView(R.layout.activity_detail_att)
 
-        tv_toolbar_title.text = "统计"
+        tv_toolbar_title.text = "考勤统计"
 
         jxbId = intent.getStringExtra("jxbId")
+
+        //传入jxbId
+        tjdayFragment.setJxbId(jxbId)
+
+        //设置viewPager
         tj_viewPager.adapter = MyAdapter(supportFragmentManager)
         tj_tabLayout.setSelectedTabIndicatorColor(resources.getColor(R.color.colorPrimary))
         tj_tabLayout.setupWithViewPager(tj_viewPager)
@@ -31,9 +48,10 @@ class DetailAttActivity : AppCompatActivity() {
         private var titles = arrayOf("日统计", "周统计", "月统计")
 
         init {
-            list.add(TjdayFragment())
-            list.add(TjweekFragment())
-            list.add(TjmonthFragment())
+
+            list.add(tjdayFragment)
+            list.add(tjweekFragment)
+            list.add(tjmonthFragment)
         }
 
         override fun getItem(position: Int): Fragment {
@@ -44,7 +62,6 @@ class DetailAttActivity : AppCompatActivity() {
             return list.size
         }
 
-        //重写这个方法，将设置每个Tab的标题
         override fun getPageTitle(position: Int): CharSequence? {
             return titles[position]
         }
