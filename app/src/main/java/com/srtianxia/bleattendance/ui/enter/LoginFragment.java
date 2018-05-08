@@ -3,10 +3,9 @@ package com.srtianxia.bleattendance.ui.enter;
 import android.animation.Animator;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewAnimationUtils;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -19,7 +18,6 @@ import com.srtianxia.bleattendance.di.component.DaggerLoginComponent;
 import com.srtianxia.bleattendance.di.module.LoginModule;
 import com.srtianxia.bleattendance.ui.student.home.StudentHomeActivity;
 import com.srtianxia.bleattendance.ui.teacher.home.TeacherHomeActivity;
-import com.srtianxia.bleattendance.utils.DialogUtils;
 import com.srtianxia.bleattendance.utils.NetWorkUtils;
 import com.srtianxia.bleattendance.utils.PreferenceManager;
 import com.srtianxia.bleattendance.utils.ToastUtil;
@@ -55,11 +53,22 @@ public class LoginFragment extends BaseFragment implements LoginPresenter.ILogin
     @Override
     protected void initView() {
         DaggerLoginComponent.builder().loginModule(new LoginModule(this)).build().inject(this);
+
+        String flag = PreferenceManager.getInstance().getString(PreferenceManager.SP_LOGIN_FLAG, "");
+        //判断进入学生界面还是教师界面
+        if (TextUtils.equals(flag, PreferenceManager.SP_LOGIN_FLAG_STU)) {
+            UiHelper.startActivity(getActivity(), StudentHomeActivity.class);
+            getActivity().finish();
+        } else if (TextUtils.equals(flag, PreferenceManager.SP_LOGIN_FLAG_TEA)) {
+            UiHelper.startActivity(getActivity(), TeacherHomeActivity.class);
+            getActivity().finish();
+        }
     }
 
 
     @OnClick(R.id.tv_link_teacher_enter)
     void clickToTeacher() {
+        //handleTeacher();
         if ("".equals(getStuNum())) {
             ToastUtil.show(getActivity(), getResources().getString(R.string.login_error_name_null), true);
             return;
@@ -159,6 +168,16 @@ public class LoginFragment extends BaseFragment implements LoginPresenter.ILogin
         tvLinkTeacherEnter.setClickable(true);
     }
 
+    /**
+     * 未连数据库，先登录进教室界面，不做逻辑判断
+     */
+    private void handleTeacher()
+    {
+        startActivity(new Intent(getActivity(), TeacherHomeActivity.class),
+                ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
+        getActivity().finishAfterTransition();
+        getActivity().finish();
+    }
 
     private interface HandleSuccess {
         void onAnimEnd();

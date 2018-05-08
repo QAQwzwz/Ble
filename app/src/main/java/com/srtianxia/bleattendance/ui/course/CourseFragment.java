@@ -80,6 +80,9 @@ public class CourseFragment extends ViewPagerFragment implements CoursePresenter
         }
     }
 
+    /**
+     * 加载课表
+     */
     private void initData() {
         mWeek = getArguments().getInt(BUNDLE_KEY);
         coursePresenter = new CoursePresenter(this);
@@ -224,7 +227,7 @@ public class CourseFragment extends ViewPagerFragment implements CoursePresenter
     @Override
     protected void lazyload() {
         if (isPrepared && isVisible){
-            coursePresenter.loadData();
+            coursePresenter.loadData();//加载课表
         }
     }
     // todo:如果mWeek = 本周，则……

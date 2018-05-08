@@ -21,27 +21,43 @@ import butterknife.ButterKnife;
 
 public class AttListAdapter extends BaseAdapter<String> {
     private OnItemClickListener mOnItemClickListener;
+    private List<Attendance> mAttendanceList;
 
+
+
+    /*
+    public AttListAdapter(List<Attendance> attendanceList)
+    {
+        mAttendanceList = attendanceList;
+    }
+    */
 
     public void setOnItemClickListener(OnItemClickListener mOnItemClickListener) {
         this.mOnItemClickListener = mOnItemClickListener;
     }
 
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+        Attendance attendance = mAttendanceList.get(position);
+        //holder.attName.setText(attendance.getName());
+        //holder.attNum.setText(attendance.getNum());
+        //holder.attStuNum.setText(attendance.getStuNum());
 
-    @Override public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof AttViewHolder) {
             AttViewHolder viewHolder = (AttViewHolder) holder;
             viewHolder.setData(getDataController().getData(position));
             if (mOnItemClickListener != null) {
                 viewHolder.itemView.setOnClickListener(v -> mOnItemClickListener.onClick(position));
             }
+
         }
+
     }
 
 
     @Override protected RecyclerView.ViewHolder createHolder(ViewGroup parent, int viewType) {
         return new AttViewHolder(
-                LayoutInflater.from(parent.getContext()).inflate(R.layout.item_att_list, parent, false));
+                LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_attebdance, parent, false));
     }
 
 

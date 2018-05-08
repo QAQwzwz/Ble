@@ -152,6 +152,11 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * 显示第x周课程及其信息
+     * @param week
+     * @param listener
+     */
     public void queryTeaCourse(int week, OnQueryTeaSuccessListener listener) {
 
         TeaCourseEntity teaCourse = new TeaCourseEntity();

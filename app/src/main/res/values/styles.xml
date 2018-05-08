@@ -8,7 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
     </style>
-
+<style name="popwin_style">
+    <item name = "android:windowEnterAnimation">@anim/pop_show</item>
+    <item name = "android:windowExitAnimation">@anim/pop_dissmiss</item>
+</style>
     <style name="AppThemeNoActionbar" parent="AppTheme.NoActionBar">
         <item name="android:windowTranslucentStatus">true</item>
     </style>

@@ -58,6 +58,9 @@ public class DataAnalysisFragment extends Fragment {
 
 }
 
+/**
+ * 显示考勤统计和课程数据
+ */
 class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     private String[] strings = {"考勤统计", "课程数据"};

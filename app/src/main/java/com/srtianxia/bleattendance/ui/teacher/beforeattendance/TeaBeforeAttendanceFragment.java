@@ -57,7 +57,7 @@ public class TeaBeforeAttendanceFragment extends BaseFragment implements TeaBefo
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
 
-        mPresenter.getData();
+        mPresenter.getData();//获取课程信息
 
         mSwipeRefresh.setOnRefreshListener(this);
 
@@ -74,6 +74,9 @@ public class TeaBeforeAttendanceFragment extends BaseFragment implements TeaBefo
 
     /**
      * todo：因为网络请求后才有数据：mAttInfoEntity，所以此时才能newInstance()
+     */
+    /**
+     * 显示详细信息
      */
     public void showAttInfoFragment() {
 
@@ -95,9 +98,13 @@ public class TeaBeforeAttendanceFragment extends BaseFragment implements TeaBefo
         mReqeustErrorInfo.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * 添加详细信息
+     */
     private void addAttInfoFragment() {
 
         if (!havaAttInfoFragment) {
+            //不空说明请求数据成功
             getChildFragmentManager().beginTransaction()
                     .add(R.id.framelayout_before, mAttInfoFragment)
                     .show(mAttInfoFragment)

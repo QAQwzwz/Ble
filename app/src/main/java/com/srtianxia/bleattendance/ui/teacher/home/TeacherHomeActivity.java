@@ -108,13 +108,19 @@ public class TeacherHomeActivity extends BaseActivity
 
     }
 
+    /**
+     * 显示教师界面及碎片
+     */
     private void initFragment() {
-        mTeacherScanFragment = TeacherScanFragment.newInstance();
-        mCourseContainerFragment = CourseContainerFragment.newInstance();
-        mAttendanceFragment = AttendanceFragment.newInstance();
-        mTeaBeforeAttendanceFragment = TeaBeforeAttendanceFragment.newInstance();
-        mDataAnalysisFragment = DataAnalysisFragment.newInstance();
+        mTeacherScanFragment = TeacherScanFragment.newInstance();//扫描
+        mCourseContainerFragment = CourseContainerFragment.newInstance();//课表
+        mAttendanceFragment = AttendanceFragment.newInstance();//当堂考勤
+        mTeaBeforeAttendanceFragment = TeaBeforeAttendanceFragment.newInstance();//历史考勤
+        mDataAnalysisFragment = DataAnalysisFragment.newInstance();//数据
 
+        /**
+         * 添加碎片
+         */
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragment_container, mTeacherScanFragment)
                 .add(R.id.fragment_container, mAttendanceFragment)
@@ -135,6 +141,11 @@ public class TeacherHomeActivity extends BaseActivity
         return true;
     }
 
+    /**
+     * Toolbar的隐藏按钮
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -159,7 +170,7 @@ public class TeacherHomeActivity extends BaseActivity
                 finish();
                 break;
             case R.id.home:
-                mTeaBeforeAttendanceFragment.showBeforeAttFragment();
+                mTeaBeforeAttendanceFragment.showBeforeAttFragment();//将RecyclerView显示出来
                 hideHome();
                 break;
         }
@@ -225,6 +236,9 @@ public class TeacherHomeActivity extends BaseActivity
         return true;
     }
 
+    /**
+     * 显示返回键
+     */
     public void showHome() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -236,6 +250,9 @@ public class TeacherHomeActivity extends BaseActivity
         });
     }
 
+    /**
+     * 取消返回键
+     */
     public void hideHome() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }

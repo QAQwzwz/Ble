@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id = "@+id/attendance_head_view"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:src = "@drawable/boyheadview"
+            android:layout_weight = "2"/>
+        <cn.carbs.android.expandabletextview.library.ExpandableTextView
+            android:id = "@+id/attendance_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight = "4"
+            android:textSize = "15sp"
+            android:text = "@string/user_name"/>
+
+        <cn.carbs.android.expandabletextview.library.ExpandableTextView
+            android:id="@+id/attendance_stu_num"
+            android:layout_width="0dp"
+            android:layout_weight = "6"
+            android:layout_height="wrap_content"
+            android:text="@string/user_stu_num"
+            android:textSize="15sp" />
+
+        <cn.carbs.android.expandabletextview.library.ExpandableTextView
+            android:id="@+id/attendance_lack"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:text="@string/user_lack_num"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#A9A9A9"
+        android:alpha = "0.5"/>
+</LinearLayout>

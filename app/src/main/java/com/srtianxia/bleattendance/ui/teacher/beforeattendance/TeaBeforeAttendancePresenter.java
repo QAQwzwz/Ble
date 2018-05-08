@@ -36,11 +36,15 @@ public class TeaBeforeAttendancePresenter extends BasePresenter<TeaBeforeAttenda
         return getView();
     }
 
+    /**
+     * 获取课程数据
+     */
     public void getData() {
 
         getView().loading();
 
         if (!NetWorkUtils.isNetworkConnected(BleApplication.getContext())){
+            //如果没有网络连接
             getView().hideCourseName();
             getView().showFailureForNetWork();
             getView().loadFinish();
@@ -90,6 +94,10 @@ public class TeaBeforeAttendancePresenter extends BasePresenter<TeaBeforeAttenda
         return null;
     }
 
+    /**
+     * 从服务器回调教师第x周课表
+     * @param week
+     */
     public void requestTeaDataForNet(String week) {
 
         String teaToken = PreferenceManager.getInstance().getString(PreferenceManager.SP_TOKEN_TEACHER, "");

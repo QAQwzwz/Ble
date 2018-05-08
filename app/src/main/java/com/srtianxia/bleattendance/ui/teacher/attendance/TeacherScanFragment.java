@@ -30,7 +30,7 @@ public class TeacherScanFragment extends BaseListFragment<RxBleScanResult, Teach
     public static TeacherScanFragment newInstance() {
         Bundle args = new Bundle();
         TeacherScanFragment fragment = new TeacherScanFragment();
-        fragment.setArguments(args);
+        fragment.setArguments(args);//传递参数
         return fragment;
     }
 

@@ -37,6 +37,7 @@ public class CourseContainerFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+
         initData();
         initListener();
         Log.i(TAG,"initview");

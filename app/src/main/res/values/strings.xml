@@ -9,6 +9,9 @@
     <string name="action_connect_all">connect all</string>
     <string name="action_post_uuid">post uuid</string>
     <string name="action_logout">logout</string>
+    <string name="user_name">姓名：</string>
+    <string name="user_stu_num">学号：</string>
+    <string name="user_lack_num">缺到：</string>
 
     <!--<string name="base_url">http://119.29.155.240:8080/bluetooth/</string>-->
     <!--新版后端接口-->
