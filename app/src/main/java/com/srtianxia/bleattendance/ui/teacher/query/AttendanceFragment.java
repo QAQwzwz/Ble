@@ -68,8 +68,7 @@ public class AttendanceFragment extends BaseFragment {
     */
 
     @Override
-    protected void initView()
-    {
+    protected void initView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(mAdapter);
         TabPagerAdapter adapter = new TabPagerAdapter(getChildFragmentManager(), mFragmentList, mTitles);
@@ -108,57 +107,52 @@ public class AttendanceFragment extends BaseFragment {
     }
     */
 
-public List<Attendance> getData()
-{
-    List<Attendance> attendanceList = new ArrayList<>();
-    for(int i = 0;i < 30;i++)
-    {
-        Attendance attendance = new Attendance( "王晨宇","2016215067", "0");
-        mAttendanceList.add(attendance);
+    public List<Attendance> getData() {
+        List<Attendance> attendanceList = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
+            Attendance attendance = new Attendance("王晨宇", "2016215067", "0");
+            mAttendanceList.add(attendance);
+        }
+        return attendanceList;
     }
-    return attendanceList;
-}
 
-public List<PopuWindowClassId> getPopuClassId()
-    {
+    public List<PopuWindowClassId> getPopuClassId() {
         List<PopuWindowClassId> popuWindowClassIdList = new ArrayList<>();
-        for(int i =0;i < 6;i++)
-        {
+        for (int i = 0; i < 6; i++) {
             PopuWindowClassId popuWindowClassId = new PopuWindowClassId("04031601");
             mPopuWindowClassId.add(popuWindowClassId);
         }
         return popuWindowClassIdList;
     }
 
-@OnClick(R.id.fragment_attendance_more)
-public void showClassId()
-{
-    showPopWindow();
-}
+    @OnClick(R.id.fragment_attendance_more)
+    public void showClassId() {
+        showPopWindow();
+    }
 
     /**
      * 显示下拉菜单
      */
-    public void showPopWindow()
-{
-    //RecyclerView popuRecyclerView =(RecyclerView) getView().findViewById(R.id.popuwindow_recycler_view);
-    //popuRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-    //popuRecyclerView.setAdapter(mPopuAdapter);
-    PopWindow popWindowe = new PopWindow(getContext(),getView(),R.layout.pop_filter);
-    popWindowe.isClickOutSide(false);
-    popWindowe.showAsDropDown(more);
-    //getPopuClassId();
-    //popWindowe.setAnimationStyle(R.anim.anim_pop);
-    //getPopuClassId();
-    //popWindowe.showAtLocation();
-}
+    public void showPopWindow() {
+        //RecyclerView popuRecyclerView =(RecyclerView) getView().findViewById(R.id.popuwindow_recycler_view);
+        //popuRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        //popuRecyclerView.setAdapter(mPopuAdapter);
+        PopWindow popWindowe = new PopWindow(getContext(), getView(), R.layout.pop_filter);
+        popWindowe.isClickOutSide(false);
+        popWindowe.showAsDropDown(more);
+        //getPopuClassId();
+        //popWindowe.setAnimationStyle(R.anim.anim_pop);
+        //getPopuClassId();
+        //popWindowe.showAtLocation();
+    }
 
-public void handleListView()
-{
+    public void handleListView() {
 
-}
+    }
+
     /**
      * 跟据返回值确定视图
+     *
      * @return
      */
     @Override

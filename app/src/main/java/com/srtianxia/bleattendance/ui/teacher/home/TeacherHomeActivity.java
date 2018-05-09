@@ -192,25 +192,25 @@ public class TeacherHomeActivity extends BaseActivity
                     closeFabMenu();
 
                 break;
-            case R.id.bottom_nav_attendance:
-//                toolbar.setVisibility(View.INVISIBLE);
-                getSupportFragmentManager().beginTransaction()
-                        .hide(mTeacherScanFragment).hide(mCourseContainerFragment).hide(mDataAnalysisFragment)
-                        .hide(mTeaBeforeAttendanceFragment).show(mAttendanceFragment)
-                        .commit();
-                if (mFabMenu.isOpened())
-                    closeFabMenu();
-
-                break;
-            case R.id.bottom_nav_before:
-                getSupportFragmentManager().beginTransaction()
-                        .hide(mTeacherScanFragment).hide(mCourseContainerFragment).hide(mDataAnalysisFragment)
-                        .hide(mAttendanceFragment).show(mTeaBeforeAttendanceFragment)
-                        .commit();
-                if (mFabMenu.isOpened())
-                    closeFabMenu();
-
-                break;
+//            case R.id.bottom_nav_attendance:
+////                toolbar.setVisibility(View.INVISIBLE);
+//                getSupportFragmentManager().beginTransaction()
+//                        .hide(mTeacherScanFragment).hide(mCourseContainerFragment).hide(mDataAnalysisFragment)
+//                        .hide(mTeaBeforeAttendanceFragment).show(mAttendanceFragment)
+//                        .commit();
+//                if (mFabMenu.isOpened())
+//                    closeFabMenu();
+//
+//                break;
+//            case R.id.bottom_nav_before:
+//                getSupportFragmentManager().beginTransaction()
+//                        .hide(mTeacherScanFragment).hide(mCourseContainerFragment).hide(mDataAnalysisFragment)
+//                        .hide(mAttendanceFragment).show(mTeaBeforeAttendanceFragment)
+//                        .commit();
+//                if (mFabMenu.isOpened())
+//                    closeFabMenu();
+//
+//                break;
 
             case R.id.bottom_nav_table:
                 mToolbar.setVisibility(View.VISIBLE);

@@ -8,8 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.srtianxia.bleattendance.R
-import com.srtianxia.bleattendance.ui.teacher.dataanalysis.attDetail.AttDetailActivity
+import com.srtianxia.bleattendance.ui.teacher.dataanalysis.courseStatistics.CourseStatisticsActivity
 import kotlinx.android.synthetic.main.fragment_tjday.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * 日统计页面
@@ -21,12 +23,14 @@ class TjdayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        circleDataView.update(60, 100)
+        tj_day_date.text = SimpleDateFormat("yyyy/MM/dd").format(Date())
+        circleDataView.update(67, 73)
         circleDataView.setOnClickListener {
-            val intent = Intent(activity, AttDetailActivity::class.java)
+            val intent = Intent(activity, CourseStatisticsActivity::class.java)
             intent.putExtra("jxbId", jxbId)
             startActivity(intent)
         }
+        counterView.load(1, 3, 3)
     }
 
     public fun setJxbId(jxbId: String) {
@@ -37,6 +41,4 @@ class TjdayFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_tjday, container, false)
     }
-
-
 }

@@ -39,26 +39,24 @@ public class CircleDataView extends android.support.v7.widget.AppCompatTextView 
 
     public void update(final int count, final int toltleCount) {
         ValueAnimator valueAnimator = ValueAnimator.ofInt(0, count);
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                int c = (int) animation.getAnimatedValue();
-                centerText = c + " / " + toltleCount;
-                invalidate();
-            }
+        valueAnimator.addUpdateListener(animation -> {
+            int c = (int) animation.getAnimatedValue();
+            centerText = c + " / " + toltleCount;
+            invalidate();
         });
         valueAnimator.setDuration(2000);
         valueAnimator.start();
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            int startColor = Color.RED;
-            int endColor = (COLOR_GREEN - startColor) * count / toltleCount / 2 + startColor;
+            int startColor = Color.rgb(255, 0, 0);
+            int endColor = 0;
+            if (count / toltleCount == 1)
+                endColor = Color.rgb(100, 200 * count / toltleCount / 2, 100);
+            else
+                endColor = Color.rgb(100, 230, 100);
             ValueAnimator colorAnimator = ValueAnimator.ofArgb(startColor, endColor);
-            colorAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator animation) {
-                    COLOR_CIRCLE = (int) animation.getAnimatedValue();
-                    invalidate();
-                }
+            colorAnimator.addUpdateListener(animation -> {
+                COLOR_CIRCLE = (int) animation.getAnimatedValue();
+                invalidate();
             });
             colorAnimator.setDuration(2500);
             colorAnimator.start();

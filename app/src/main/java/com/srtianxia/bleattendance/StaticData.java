@@ -1,5 +1,7 @@
 package com.srtianxia.bleattendance;
 
+import android.util.Log;
+
 import com.srtianxia.bleattendance.entity.TeaCourseEntity;
 import com.srtianxia.bleattendance.utils.PreferenceManager;
 import com.srtianxia.bleattendance.utils.ZiaUtilKt;
@@ -73,6 +75,7 @@ public enum StaticData {
     }
 
     public TeaCourseEntity getTeaCourseEntity() {
+        ZiaUtilKt.log(teaCourseEntity.toString());
         return teaCourseEntity;
     }
 

@@ -58,7 +58,7 @@ class AttChooseActivity : AppCompatActivity() {
                         intent.putExtra("jxbId", course.jxbId)
                         startActivity(intent)
                     }
-
+                    this@AttChooseActivity.finish()
                 }
 
 
