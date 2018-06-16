@@ -40,11 +40,13 @@ class CourseStatisticsActivity : AppCompatActivity() {
 
         //loadData
         val jxbId = intent.getStringExtra("jxbId")
+        if (jxbId == null) {
+
+        }
         val t = StaticData.instance.teaCourseEntity.data ?: return
         val teaCourse = t.first { it.jxbID == jxbId }
         course_statistics_courseName.text = teaCourse.course
         course_statistics_classId.text = teaCourse.jxbID
-
         Service.instance
                 .api
                 .getStuList(StaticData.instance.token, jxbId, teaCourse.trid)

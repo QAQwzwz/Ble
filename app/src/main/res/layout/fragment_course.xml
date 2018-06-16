@@ -85,6 +85,8 @@
                     <!--课表内容-->
                     <com.srtianxia.bleattendance.widget.CourseTableView
                         android:id="@+id/course_tab_view_course"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:layout_width="match_parent"
                         android:layout_height="600dp">
                     </com.srtianxia.bleattendance.widget.CourseTableView>

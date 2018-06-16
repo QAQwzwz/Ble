@@ -11,21 +11,20 @@ import com.srtianxia.bleattendance.R
 import kotlinx.android.synthetic.main.fragment_tjmonth.*
 import lecho.lib.hellocharts.model.*
 import lecho.lib.hellocharts.util.ChartUtils
+import java.text.SimpleDateFormat
+import java.util.*
 
-
-/**
- * A simple [Fragment] subclass.
- *
- */
 class TjmonthFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val lines = ArrayList<Line>()
         val values = ArrayList<PointValue>()
-        for (j in 0 until 7) {
-            values.add(PointValue(j.toFloat(), Math.random().toFloat() * 180f + 300))
+        for (j in 0 until 4) {
+            values.add(PointValue(j.toFloat(), Math.random().toFloat() * 20f + 400))
         }
+
+        tj_month_title.text = SimpleDateFormat("MM").format(Date()) + "月考勤数据"
 
         /*========== 设置线的一些属性 ==========*/
         val line = Line(values)               //根据值来创建一条线
@@ -45,8 +44,8 @@ class TjmonthFragment : Fragment() {
         val axisX = Axis()
         val axisY = Axis()
         val axisValueList = ArrayList<AxisValue>()
-        val str = arrayOf("星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天")
-        for (i in 0..6) {
+        val str = arrayOf("第一周", "第二周", "第三周", "第四周")
+        for (i in 0..3) {
             val axisValue = AxisValue(i.toFloat())
             axisValue.setLabel(str[i])
             axisValueList.add(axisValue)
@@ -59,6 +58,7 @@ class TjmonthFragment : Fragment() {
         lineData.axisYLeft = axisY
         lineData.axisXBottom = axisX
         lineData.isValueLabelBackgroundAuto = true
+        lineData.baseValue = 300f
 
         chart.lineChartData = lineData
     }

@@ -21,6 +21,7 @@ public enum StaticData {
     StaticData() {
         number = PreferenceManager.getInstance().getString(PreferenceManager.NUMBER, "");
         password = PreferenceManager.getInstance().getString(PreferenceManager.PASSWORD, "");
+
     }
 
     @Override

@@ -15,7 +15,6 @@ import java.util.*
 
 /**
  * 日统计页面
- *
  */
 class TjdayFragment : Fragment() {
 
@@ -24,13 +23,13 @@ class TjdayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tj_day_date.text = SimpleDateFormat("yyyy/MM/dd").format(Date())
-        circleDataView.update(67, 73)
+        circleDataView.update(57, 60)
         circleDataView.setOnClickListener {
             val intent = Intent(activity, CourseStatisticsActivity::class.java)
             intent.putExtra("jxbId", jxbId)
             startActivity(intent)
         }
-        counterView.load(1, 3, 3)
+        counterView.load(3, 2, 1)
     }
 
     public fun setJxbId(jxbId: String) {

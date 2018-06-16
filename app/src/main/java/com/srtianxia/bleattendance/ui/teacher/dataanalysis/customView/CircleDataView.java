@@ -62,7 +62,6 @@ public class CircleDataView extends android.support.v7.widget.AppCompatTextView 
             colorAnimator.start();
         }
 
-
     }
 
     private void init() {

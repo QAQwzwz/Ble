@@ -1,5 +1,7 @@
 package com.srtianxia.bleattendance.ui.teacher.attendance;
 
+import android.util.Log;
+
 import com.orhanobut.logger.Logger;
 import com.polidea.rxandroidble.RxBleConnection;
 import com.polidea.rxandroidble.RxBleDevice;
@@ -66,6 +68,7 @@ public class TeacherScanPresenter extends BasePresenter<TeacherScanPresenter.ITe
 
 
     public void startScan(String uuid) {
+        Log.e("zia", "uutd: " + uuid);
         if (isScanning()) {
             mScanSubscription.unsubscribe();
             mScanSubscription = null;

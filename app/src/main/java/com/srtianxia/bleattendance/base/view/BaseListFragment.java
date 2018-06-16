@@ -3,6 +3,7 @@ package com.srtianxia.bleattendance.base.view;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.srtianxia.bleattendance.R;
 import com.srtianxia.bleattendance.base.adapter.BaseAdapter;
@@ -42,6 +43,7 @@ public abstract class BaseListFragment<E, T extends BaseAdapter<E>> extends Base
 
     // 添加一个item数据
     public void addData(E data) {
+        Log.e("zia", data.toString());
         getAdapter().addData(data);
     }
 

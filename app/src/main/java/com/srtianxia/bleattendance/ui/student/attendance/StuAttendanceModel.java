@@ -15,6 +15,7 @@ import android.bluetooth.le.AdvertiseSettings;
 import android.bluetooth.le.BluetoothLeAdvertiser;
 import android.content.Context;
 import android.os.ParcelUuid;
+import android.util.Log;
 
 import com.orhanobut.logger.Logger;
 import com.srtianxia.bleattendance.BleApplication;
@@ -217,7 +218,12 @@ public class StuAttendanceModel implements IStuAttModel {
         mAdvScanResponse = new AdvertiseData.Builder()
                 .setIncludeDeviceName(true)
                 .build();
-
+        if (mBluetoothManager == null){
+            Log.e("zia","mBluetoothManager == null");
+        }
+        if (mGattServer == null){
+            Log.e("zia","mGattServer == null");
+        }
         mGattServer = mBluetoothManager.openGattServer(BleApplication.getContext(),
                 mGattServerCallback);
         mGattServer.addService(mBluetoothGattService);

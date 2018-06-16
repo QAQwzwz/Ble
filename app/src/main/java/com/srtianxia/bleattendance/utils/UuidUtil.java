@@ -6,7 +6,9 @@ package com.srtianxia.bleattendance.utils;
 
 public class UuidUtil {
     public static String generateUuid(String classroom) {
-        return "00000" + classroom.substring(classroom.length() - 3, classroom.length() - 1) +
+//        return "00000" + classroom.substring(classroom.length() - 3, classroom.length() - 1) +
+//                "-0000-1000-8000-00805f9b34fb";
+        return "00000" + "012" +
                 "-0000-1000-8000-00805f9b34fb";
     }
 }

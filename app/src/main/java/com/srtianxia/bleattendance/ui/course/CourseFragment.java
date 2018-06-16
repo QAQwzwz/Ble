@@ -3,6 +3,7 @@ package com.srtianxia.bleattendance.ui.course;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -92,6 +93,7 @@ public class CourseFragment extends ViewPagerFragment implements CoursePresenter
 
     private void initListener() {
         if (!getWeek().equals("0")){
+            Log.e("zia","enter");
             mCourseTableView.setOnLongClickListener(courses -> {
                 DialogUtils.getInstance().showDialog(getActivity(), "课程选择", "是否选择：第 " + getWeek() + "  周 " + courses.list.get(0).course + " ？",
                         new DialogUtils.OnButtonChooseListener() {
@@ -110,6 +112,8 @@ public class CourseFragment extends ViewPagerFragment implements CoursePresenter
                             }
                         });
             });
+        }else{
+            Log.e("zia","wrong");
         }
 
         mCourseSwipeRefreshLayout.setOnRefreshListener(() -> {

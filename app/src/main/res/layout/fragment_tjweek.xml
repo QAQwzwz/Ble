@@ -10,11 +10,22 @@
         android:layout_height="wrap_content"
         android:text="本周考勤数据"
         android:textColor="@color/colorPrimary" />
-
-    <lecho.lib.hellocharts.view.ColumnChartView
-        android:id="@+id/columnChart"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="30dp" />
+        android:layout_height="wrap_content">
+        <lecho.lib.hellocharts.view.ColumnChartView
+            android:id="@+id/columnChart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="30dp" />
+
+        <!--<lecho.lib.hellocharts.view.ColumnChartView-->
+            <!--android:id="@+id/columnChart1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="300dp"-->
+            <!--android:layout_marginTop="30dp" />-->
+    </FrameLayout>
+
+
 
 </LinearLayout>
