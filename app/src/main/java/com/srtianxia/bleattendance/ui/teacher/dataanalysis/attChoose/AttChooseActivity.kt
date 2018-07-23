@@ -23,6 +23,7 @@ import com.srtianxia.bleattendance.utils.toast
 import kotlinx.android.synthetic.main.activity_att_choose.*
 import kotlinx.android.synthetic.main.appbar_layout.*
 import rx.Observer
+import java.io.Serializable
 
 class AttChooseActivity : AppCompatActivity() {
 
@@ -51,11 +52,11 @@ class AttChooseActivity : AppCompatActivity() {
                 holder.itemView.setOnClickListener {
                     if (flag == 0) {
                         val intent = Intent(this@AttChooseActivity, TjActivity::class.java)
-                        intent.putExtra("jxbId", course.jxbId)
+                        intent.putExtra("course", course)
                         startActivity(intent)
                     } else if (flag == 1) {
                         val intent = Intent(this@AttChooseActivity, CourseStatisticsActivity::class.java)
-                        intent.putExtra("jxbId", course.jxbId)
+                        intent.putExtra("course", course)
                         startActivity(intent)
                     }
                     this@AttChooseActivity.finish()
@@ -156,4 +157,4 @@ internal class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
     }
 }
 
-data class Course(val name: String, val day: String, val room: String, val jxbId: String)
+public data class Course(val name: String, val day: String, val room: String, val jxbId: String) : Serializable

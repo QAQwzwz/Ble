@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import com.srtianxia.bleattendance.R
+import com.srtianxia.bleattendance.ui.teacher.dataanalysis.attChoose.Course
 import kotlinx.android.synthetic.main.activity_detail_att.*
 import kotlinx.android.synthetic.main.appbar_layout.*
 
@@ -18,7 +19,7 @@ import kotlinx.android.synthetic.main.appbar_layout.*
  */
 class TjActivity : AppCompatActivity() {
 
-    private lateinit var jxbId: String
+    private lateinit var course: Course
     //直接写了三个fragment，因为打卡明细在日统计和周统计的接口可能不一样
     private val tjdayFragment = TjdayFragment()
     private val tjweekFragment = TjweekFragment()
@@ -31,10 +32,12 @@ class TjActivity : AppCompatActivity() {
 
         tv_toolbar_title.text = "考勤统计"
 
-        jxbId = intent.getStringExtra("jxbId")
+        course = intent.getSerializableExtra("course") as Course
 
-        //传入jxbId
-        tjdayFragment.setJxbId(jxbId)
+        //传入course
+        tjdayFragment.setCourse(course)
+        tjweekFragment.setCourse(course)
+
 
         //设置viewPager
         tj_viewPager.adapter = MyAdapter(supportFragmentManager)

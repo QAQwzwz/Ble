@@ -3,6 +3,7 @@ package com.srtianxia.bleattendance.ui.teacher.attendance;
 import android.Manifest;
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.polidea.rxandroidble.RxBleScanResult;
 import com.srtianxia.bleattendance.base.view.BaseListFragment;
@@ -88,6 +89,7 @@ public class TeacherScanFragment extends BaseListFragment<RxBleScanResult, Teach
 
     @Override
     public void addScanResult(RxBleScanResult rxBleScanResult) {
+        Log.e("zia", "result:" + rxBleScanResult);
         addData(rxBleScanResult);
     }
 

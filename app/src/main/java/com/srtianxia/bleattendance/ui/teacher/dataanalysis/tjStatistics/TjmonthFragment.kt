@@ -24,7 +24,7 @@ class TjmonthFragment : Fragment() {
             values.add(PointValue(j.toFloat(), Math.random().toFloat() * 20f + 400))
         }
 
-        tj_month_title.text = SimpleDateFormat("MM").format(Date()) + "月考勤数据"
+//        tj_month_title.text = SimpleDateFormat("MM").format(Date()) + "月考勤数据"
 
         /*========== 设置线的一些属性 ==========*/
         val line = Line(values)               //根据值来创建一条线
@@ -44,7 +44,7 @@ class TjmonthFragment : Fragment() {
         val axisX = Axis()
         val axisY = Axis()
         val axisValueList = ArrayList<AxisValue>()
-        val str = arrayOf("第一周", "第二周", "第三周", "第四周")
+        val str = arrayOf("第一月", "第二月", "第三月", "第四月")
         for (i in 0..3) {
             val axisValue = AxisValue(i.toFloat())
             axisValue.setLabel(str[i])

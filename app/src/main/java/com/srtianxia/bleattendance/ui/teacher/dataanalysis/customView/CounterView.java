@@ -16,7 +16,7 @@ public class CounterView extends android.support.v7.widget.AppCompatTextView {
 
     private Paint paint;
     private String x = "0", y = "0", z = "0";
-    private static final String l1 = "未打卡";
+    private static final String l1 = "缺勤";
     private static final String l2 = "迟到";
     private static final String l3 = "外勤";
     private final int numberSize = 100;

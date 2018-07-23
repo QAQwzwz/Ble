@@ -5,12 +5,13 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.srtianxia.bleattendance.R
 import com.srtianxia.bleattendance.StaticData
-import com.srtianxia.bleattendance.entity.StuInfoEntity
 import com.srtianxia.bleattendance.entity.StuListEntity
 import com.srtianxia.bleattendance.http.Service
+import com.srtianxia.bleattendance.ui.teacher.dataanalysis.attChoose.Course
+import com.srtianxia.bleattendance.ui.teacher.dataanalysis.courseStatistics.AttendanceAdapter.DAY
+import com.srtianxia.bleattendance.ui.teacher.dataanalysis.courseStatistics.AttendanceAdapter.NORMAL
 import com.srtianxia.bleattendance.utils.RxSchedulersHelper
 import com.srtianxia.bleattendance.utils.log
 import kotlinx.android.synthetic.main.activity_course_statistics.*
@@ -39,17 +40,18 @@ class CourseStatisticsActivity : AppCompatActivity() {
         course_statistics_rv.adapter = adapter
 
         //loadData
-        val jxbId = intent.getStringExtra("jxbId")
-        if (jxbId == null) {
-
+        val course = intent.getSerializableExtra("course") as Course
+        var flag = intent.getStringExtra("flag")
+        if (flag == null){
+            flag = NORMAL
         }
         val t = StaticData.instance.teaCourseEntity.data ?: return
-        val teaCourse = t.first { it.jxbID == jxbId }
+        val teaCourse = t.first { it.jxbID == course.jxbId }
         course_statistics_courseName.text = teaCourse.course
         course_statistics_classId.text = teaCourse.jxbID
         Service.instance
                 .api
-                .getStuList(StaticData.instance.token, jxbId, teaCourse.trid)
+                .getStuList(StaticData.instance.token, course.jxbId, teaCourse.trid)
                 .compose(RxSchedulersHelper.io2main())
                 .subscribe(object : Observer<StuListEntity> {
                     private var stuListEntity: StuListEntity? = null
@@ -65,7 +67,7 @@ class CourseStatisticsActivity : AppCompatActivity() {
                     }
 
                     override fun onCompleted() {
-                        adapter.load(stuListEntity?.data)
+                        adapter.load(stuListEntity?.data, flag)
                         progressDialog.dismiss()
                     }
                 })

@@ -195,6 +195,9 @@ public class StuAttendanceModel implements IStuAttModel {
     public void initBle(String uuid) {
         mBluetoothManager = (BluetoothManager) BleApplication.getContext()
                 .getSystemService(Context.BLUETOOTH_SERVICE);
+        if (mBluetoothManager == null){
+            Log.e("zia","mBluetoothManager == null");
+        }
         mBluetoothAdapter = mBluetoothManager.getAdapter();
         mAdvertiser = mBluetoothAdapter.getBluetoothLeAdvertiser();
         mBluetoothGattService = new BluetoothGattService(
@@ -218,14 +221,11 @@ public class StuAttendanceModel implements IStuAttModel {
         mAdvScanResponse = new AdvertiseData.Builder()
                 .setIncludeDeviceName(true)
                 .build();
-        if (mBluetoothManager == null){
-            Log.e("zia","mBluetoothManager == null");
-        }
+        mGattServer = mBluetoothManager.openGattServer(BleApplication.getContext(),
+                mGattServerCallback);
         if (mGattServer == null){
             Log.e("zia","mGattServer == null");
         }
-        mGattServer = mBluetoothManager.openGattServer(BleApplication.getContext(),
-                mGattServerCallback);
         mGattServer.addService(mBluetoothGattService);
         mBluetoothDevices = new HashSet<>();
     }
